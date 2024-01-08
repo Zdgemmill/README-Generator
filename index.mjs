@@ -1,5 +1,5 @@
-const fs = require('fs');
-const inquirer = require('inquirer');
+import fs from 'fs';
+import inquirer from 'inquirer';
 //questions for user
 function promptUser() {
     inquirer
@@ -53,16 +53,15 @@ function promptUser() {
 
         ])
         .then((response) =>
-            response.confirm === response.password
-                ? console.log('Success!')
-                : console.log('You forgot your password already?!')
+            generateReadme(response)
+
         );
 }
 
 function generateReadme(data) {
     const filename = 'README.md';
 
-    // Create README content using the provided data
+    // Create README content
     const readmeContent = `
 # ${data.title}
 
@@ -104,3 +103,4 @@ For questions about this project, please contact ${data['github-Username']} at $
         }
     });
 }
+promptUser();
