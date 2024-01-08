@@ -60,13 +60,26 @@ function promptUser() {
 
 function generateReadme(data) {
     const filename = 'README.md';
+    const licenseBadges = {
+        MIT: '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)',
+        Apache: '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)',
+        GPL: '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)',
+        Other: 'Custom badge for Other license',
+        None: 'No license selected',
+    };
+
+    const selectedLicenseBadge = licenseBadges[data.license];
+
 
     // Create README content
     const readmeContent = `
 # ${data.title}
 
+# ${selectedLicenseBadge}
+
 ## Description
-${data.description}
+
+# ${data.description}
 
 ## Table of Contents
 1. [Installation](#installation)
